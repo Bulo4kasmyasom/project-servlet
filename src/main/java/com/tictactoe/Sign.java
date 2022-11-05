@@ -1,6 +1,7 @@
 package com.tictactoe;
 
 public enum Sign {
+    // Sign – enum, который отвечает за “крестик/нолик/пустота”.
     EMPTY(' '),
     CROSS('X'),
     NOUGHT('0');
@@ -9,9 +10,9 @@ public enum Sign {
 
     Sign(char sign) {
         this.sign = sign;
-    }
+    } // конструктор
 
     public char getSign() {
         return sign;
-    }
+    } // получить поле sign
 }
