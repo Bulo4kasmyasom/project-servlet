@@ -1,6 +1,7 @@
 package com.tictactoe;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,17 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @WebServlet(name = "LogicServlet", value = "/logic")
 public class LogicServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Получаем текущую сессию
         HttpSession currentSession = req.getSession();
 
-        // Получаем объект игрового поля из сессии
-        Field field = extractField(currentSession);
+        // пользователь изначально должен был зайти на /start, а не сюда
+        Object fieldAttribute = currentSession.getAttribute("field");
+        if(Objects.isNull(fieldAttribute)) {
+            resp.sendRedirect("/start");
+            return;
+        }
 
+        // Получаем объект игрового поля из сессии
+        Field field = extractField(currentSession, fieldAttribute);
         // получаем индекс ячейки, по которой произошел клик
         int index = getSelectedIndex(req);
         Sign currentSign = field.getField().get(index);
@@ -106,8 +115,7 @@ public class LogicServlet extends HttpServlet {
         return isNumeric ? Integer.parseInt(click) : 0;
     }
 
-    private Field extractField(HttpSession currentSession) {
-        Object fieldAttribute = currentSession.getAttribute("field");
+    private Field extractField(HttpSession currentSession, Object fieldAttribute) {
         if (Field.class != fieldAttribute.getClass()) {
             currentSession.invalidate();
             throw new RuntimeException("Session is broken, try one more time");

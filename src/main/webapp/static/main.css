@@ -1,5 +1,13 @@
+*{
+    color: #676767;
+}
+h1, table{
+    width: 500px;
+    margin: 0 auto;
+}
+
 td {
-    border: 3px solid black;
+    border: 2px solid black;
     padding: 10px;
     border-collapse: separate;
     margin: 10px;
@@ -8,4 +16,36 @@ td {
     font-size: 50px;
     text-align: center;
     empty-cells: show;
+}
+td:hover{
+    cursor: pointer;
+    border: 2px solid #7e7e7e;
+    box-shadow: 1px 1px 5px 1px #555;
+}
+td:active{
+    border-color: aqua;
+}
+
+.container {
+    position: relative;
+}
+
+.center {
+    margin-top: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+button{
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #555555;
+    border-radius: 10px;
+    color: #013636;
+}
+button:hover{
+    border: 1px dotted #046060;
+    cursor: pointer;
 }
