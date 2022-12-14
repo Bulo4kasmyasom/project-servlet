@@ -49,11 +49,17 @@ button{
     border-radius: 10px;
     color: #013636;
 }
-
+#game-rules{
+    margin-top: 700px;
+    padding: 15px;
+    border: 1px solid #555555;
+    border-radius: 10px;
+}
 #start-button{
-    margin-top: 50px;
     padding: 40px;
     font-size: 22px;
+    margin: 50px auto;
+    display: block;
 }
 
 button:hover{
