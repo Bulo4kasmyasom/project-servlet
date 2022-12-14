@@ -1,7 +1,6 @@
 package com.tictactoe;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +19,7 @@ public class LogicServlet extends HttpServlet {
         // Получаем текущую сессию
         HttpSession currentSession = req.getSession();
 
-        // пользователь изначально должен был зайти на /start, а не сюда
+        // пользователь изначально должен был зайти на /start
         Object fieldAttribute = currentSession.getAttribute("field");
         if(Objects.isNull(fieldAttribute)) {
             resp.sendRedirect("/start");

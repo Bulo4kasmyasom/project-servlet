@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-//@WebServlet(name = "InitServlet", value = {"","/", "/start"}) // вроде работает, а вроде и нет
 @WebServlet(name = "InitServlet", value = {"/start"})
 public class InitServlet extends HttpServlet {
     @Override
